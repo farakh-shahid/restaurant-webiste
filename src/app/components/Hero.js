@@ -18,7 +18,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 4000); // 4 seconds per slide
+    }, 9000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -53,7 +53,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 text-center text-white relative z-10 flex flex-col justify-center min-h-screen">
+      <div className="container mx-auto px-4 text-center text-white relative z-10 flex flex-col justify-center min-h-screen mt-15">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,14 +75,14 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl md:text-2xl font-light max-w-3xl mx-auto"
           >
-            Where Tradition Meets Taste - Experience the Royal Flavors of Pakistan
+            {/* Where Tradition Meets Taste - Experience the Royal Flavors of Pakistan */}
           </motion.p>
 
           {/* Quick Link Boxes */}
-          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 mt-24">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 mt-15">
             <a
               href="#menus"
-              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-orange.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">OUR MENUS</span>
@@ -90,7 +90,7 @@ const Hero = () => {
             </a>
             <a
               href="#gallery"
-              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-pink.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">GALLERY</span>
@@ -98,7 +98,7 @@ const Hero = () => {
             </a>
             <a
               href="#events"
-              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-green.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">EVENTS & CATERING</span>
@@ -106,7 +106,7 @@ const Hero = () => {
             </a>
             <a
               href="#locations"
-              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-blue.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">FIND US</span>
