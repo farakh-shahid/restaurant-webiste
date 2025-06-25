@@ -62,7 +62,7 @@ const Hero = () => {
         >
           {/* Main Title */}
           <div className="space-y-4">
-            <h1 className="font-display text-6xl md:text-8xl font-bold">
+            <h1 className="font-display text-6xl md:text-8xl font-bold font-dancing-script">
               King Karahi Tawa
             </h1>
             <div className="space-y-2"></div>
@@ -79,10 +79,10 @@ const Hero = () => {
           </motion.p>
 
           {/* Quick Link Boxes */}
-          <div className="flex flex-wrap justify-center gap-4 mt-24">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 mt-24">
             <a
               href="#menus"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-orange.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">OUR MENUS</span>
@@ -90,7 +90,7 @@ const Hero = () => {
             </a>
             <a
               href="#gallery"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-pink.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">GALLERY</span>
@@ -98,7 +98,7 @@ const Hero = () => {
             </a>
             <a
               href="#events"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-green.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">EVENTS & CATERING</span>
@@ -106,7 +106,7 @@ const Hero = () => {
             </a>
             <a
               href="#locations"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
+              className="w-11/12 md:w-48 h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-blue.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">FIND US</span>

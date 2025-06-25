@@ -25,9 +25,9 @@ const Header = () => {
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
       {/* Top bar */}
-      <div className="bg-primary text-white py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center text-sm">
+      <div className="hidden md:block bg-primary text-white py-2">
+        <div className="containadner mx-auto px-4">
+          <div className=" flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <Phone size={14} />
@@ -52,7 +52,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="font-display text-3xl font-bold text-primary">
+            <h1 className="font-display text-3xl font-bold text-primary font-dancing-script">
               King Karahi Tawa
             </h1>
           </div>
