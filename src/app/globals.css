@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  /* --background: #ffffff; */
+  --background: #090806;
   --foreground: #171717;
-  --primary: #d97706;
-  /* --primary: #EA5247; */
+  /* --primary: #d97706; */
+  --primary: #090806;
   --primary-dark: #b45309;
   --secondary: #dc2626;
   --accent: #fbbf24;
-  --muted: #f3f4f6;
+  /* --muted: #f3f4f6; */
+  --muted: #090806;
   --border: #e5e7eb;
 }
 
@@ -42,6 +45,10 @@ body {
 
 .font-display {
   font-family: var(--font-display), serif;
+}
+
+.font-dancing-script {
+  font-family: 'Dancing Script', cursive;
 }
 
 /* Custom scrollbar */

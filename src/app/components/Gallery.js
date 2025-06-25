@@ -161,7 +161,23 @@ const Gallery = () => {
       category: 'Experience',
       type: 'video',
       poster: '/WhatsApp Image 2025-06-24 at 11.36.07 AM (2).jpeg'
-    }
+    },
+    // New Images
+    { src: '/Platter3.webp', alt: 'Mixed Platter 3', category: 'Platters', type: 'image' },
+    { src: '/Platter2.webp', alt: 'Mixed Platter 2', category: 'Platters', type: 'image' },
+    { src: '/Platter.webp', alt: 'Mixed Platter', category: 'Platters', type: 'image' },
+    { src: '/Nann.webp', alt: 'Fresh Naan', category: 'Breads', type: 'image' },
+    { src: '/Menu.webp', alt: 'Restaurant Menu', category: 'Menu', type: 'image' },
+    { src: '/Main_door.webp', alt: 'Main Entrance', category: 'Ambiance', type: 'image' },
+    { src: '/lahore-hero.webp', alt: 'Restaurant Hero', category: 'Ambiance', type: 'image' },
+    { src: '/HeroSectionNewPic.jpg', alt: 'Hero Section New', category: 'Ambiance', type: 'image' },
+    { src: '/Gallery.webp', alt: 'Gallery Interior', category: 'Ambiance', type: 'image' },
+    { src: '/2025-02-19.webp', alt: 'Special Event 2025', category: 'Events', type: 'image' },
+    { src: '/Ambiance.webp', alt: 'Restaurant Ambiance', category: 'Ambiance', type: 'image' },
+    { src: '/BBQ.webp', alt: 'BBQ Platter', category: 'BBQ', type: 'image' },
+    { src: '/BBq2.jpg', alt: 'BBQ Platter 2', category: 'BBQ', type: 'image' },
+    { src: '/BBQ3.webp', alt: 'BBQ Platter 3', category: 'BBQ', type: 'image' },
+    { src: '/Beautifu;.webp', alt: 'Beautiful Restaurant', category: 'Ambiance', type: 'image' },
   ];
 
   const categories = [
@@ -180,7 +196,12 @@ const Gallery = () => {
     'Experience',
     'Behind the Scenes',
     'Food Prep',
-    'Service'
+    'Service',
+    'Platters',
+    'Breads',
+    'Menu',
+    'Events',
+    'BBQ'
   ];
 
   const [selectedCategory, setSelectedCategory] = useState('All');

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Utensils, Coffee, Gift, Users, Star } from 'lucide-react';
+import { useState } from 'react';
 
 const Menus = () => {
   const menuCategories = [
@@ -36,13 +37,65 @@ const Menus = () => {
   ];
 
   const popularDishes = [
-    { name: 'Butter Chicken', category: 'Curry', price: '£12.95', spicy: false },
-    { name: 'Lamb Karahi', category: 'Grill', price: '£15.95', spicy: true },
-    { name: 'Chicken Biryani', category: 'Rice', price: '£13.95', spicy: false },
-    { name: 'Mixed Grill', category: 'BBQ', price: '£18.95', spicy: true },
-    { name: 'Paneer Tikka', category: 'Vegetarian', price: '£11.95', spicy: false },
-    { name: 'Fish Curry', category: 'Seafood', price: '£14.95', spicy: true }
+    {
+      name: 'Butter Chicken',
+      category: 'Curry',
+      price: '£12.95',
+      spicy: false,
+      image: '/WhatsApp Image 2025-06-24 at 11.36.07 AM (5).jpeg',
+      description: 'Tender chicken cooked in a creamy tomato sauce with aromatic spices.',
+      ingredients: 'Chicken, tomato, cream, butter, garam masala, ginger, garlic'
+    },
+    {
+      name: 'Lamb Karahi',
+      category: 'Grill',
+      price: '£15.95',
+      spicy: true,
+      image: '/Platter3.webp',
+      description: 'Succulent lamb pieces simmered in a traditional karahi wok.',
+      ingredients: 'Lamb, tomatoes, green chili, ginger, garlic, coriander, spices'
+    },
+    {
+      name: 'Chicken Biryani',
+      category: 'Rice',
+      price: '£13.95',
+      spicy: false,
+      image: '/Platter2.webp',
+      description: 'Fragrant basmati rice layered with spiced chicken and herbs.',
+      ingredients: 'Chicken, basmati rice, saffron, fried onions, yogurt, spices'
+    },
+    {
+      name: 'Mixed Grill',
+      category: 'BBQ',
+      price: '£18.95',
+      spicy: true,
+      image: '/BBQ.webp',
+      description: 'A sizzling selection of our best grilled meats and kebabs.',
+      ingredients: 'Chicken tikka, lamb chops, seekh kebab, spices, lemon'
+    },
+    {
+      name: 'Paneer Tikka',
+      category: 'Vegetarian',
+      price: '£11.95',
+      spicy: false,
+      image: '/Platter.webp',
+      description: 'Grilled paneer cubes marinated in yogurt and spices.',
+      ingredients: 'Paneer, yogurt, bell pepper, onion, spices, lemon'
+    },
+    {
+      name: 'Fish Curry',
+      category: 'Seafood',
+      price: '£14.95',
+      spicy: true,
+      image: '/BBQ3.webp',
+      description: 'Delicate fish fillets cooked in a spicy, tangy curry sauce.',
+      ingredients: 'Fish, tomatoes, tamarind, mustard seeds, curry leaves, spices'
+    }
   ];
+
+  const categories = ['All', ...Array.from(new Set(popularDishes.map(d => d.category)))];
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const filteredDishes = selectedCategory === 'All' ? popularDishes : popularDishes.filter(d => d.category === selectedCategory);
 
   return (
     <section id="menus" className="py-20 bg-white">
@@ -89,50 +142,66 @@ const Menus = () => {
           ))}
         </div>
 
-        {/* Popular Dishes */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+        {/* Menu Items Section with Background */}
+        <div 
+          className="relative py-12 mb-16 rounded-2xl overflow-hidden"
+          style={{
+            backgroundImage: 'url(/menu-bg.jpg)',
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }}
         >
-          <h3 className="font-display text-3xl font-bold text-gray-800 mb-4">
-            Sparklewowed Homemade Gourmet Goodness
-          </h3>
-          <p className="text-lg text-gray-600">
-            100% Superlicious
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {popularDishes.map((dish, index) => (
-            <motion.div
-              key={dish.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white border border-border rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <div className="flex justify-between items-start mb-3">
-                <div>
-                  <h4 className="font-semibold text-lg text-gray-800">{dish.name}</h4>
-                  <p className="text-sm text-gray-500">{dish.category}</p>
-                </div>
-                <div className="flex items-center space-x-2">
-                  {dish.spicy && <Star size={16} className="text-red-500" />}
-                  <span className="font-bold text-primary">{dish.price}</span>
-                </div>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+          {/* Content */}
+          <div className="relative z-10">
+            {/* Category Tabs */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-5 py-2 rounded-full border font-semibold transition-colors text-base cursor-pointer ${selectedCategory === cat ? 'bg-primary text-white border-primary' : 'bg-white text-primary border-primary hover:bg-primary hover:text-white'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            {/* Menu Items Section Redesigned */}
+            <div className="max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                {filteredDishes.map((dish, index) => (
+                  <div key={dish.name} className="flex items-start gap-6 pb-8 border-b border-dashed border-gray-300 last:border-b-0">
+                    {/* Circular Image with Shadow */}
+                    <div className="flex-shrink-0">
+                      <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg border-4 border-white bg-white">
+                        <img src={dish.image} alt={dish.name} className="object-cover w-full h-full" />
+                      </div>
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center mb-1">
+                        <h4 className="font-bold text-lg text-gray-900 tracking-tight uppercase">
+                          {dish.name}
+                        </h4>
+                        <span className="font-bold text-gray-900 text-base ml-4 whitespace-nowrap">
+                          {dish.price}
+                        </span>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-1">
+                        {dish.description}
+                      </div>
+                      <div className="text-sm italic text-red-600 font-dancing-script">
+                        {dish.ingredients}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="h-32 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg mb-4 flex items-center justify-center">
-                <Utensils size={32} className="text-primary" />
-              </div>
-              <button className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-dark transition-colors">
-                Add to Order
-              </button>
-            </motion.div>
-          ))}
+            </div>
+          </div>
         </div>
 
         {/* CTA Section */}

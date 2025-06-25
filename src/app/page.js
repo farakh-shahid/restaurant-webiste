@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import SpecialOfferSection from './components/SpecialOfferSection';
 import Menus from './components/Menus';
 import Locations from './components/Locations';
 import Events from './components/Events';
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <Menus />
+      <SpecialOfferSection />
       <Locations />
       <Events />
       <Gallery />

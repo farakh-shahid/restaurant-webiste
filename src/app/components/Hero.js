@@ -1,20 +1,45 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Play } from 'lucide-react';
 
+const heroImages = [
+  '/bg-header.jpg',
+  '/pexels-hasan-kurt-154798938-10749578.jpg',
+  '/pexels-hasan-kurt-154798938-13151204.jpg',
+  '/pexels-hot-wok-3583741-12232804.jpg',
+  '/pexels-jonathanborba-2983102.jpg',
+];
+
 const Hero = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // 4 seconds per slide
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image Slider */}
       <div className="absolute inset-0">
-        <img
-          src="/WhatsApp Image 2025-06-24 at 11.36.07 AM (1).jpeg"
-          alt="King Karahi Tawa Restaurant Interior"
-          className="w-full h-full object-cover"
-        />
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={heroImages[current]}
+            src={heroImages[current]}
+            alt="King Karahi Tawa Restaurant Hero Background"
+            className="w-full h-full object-cover absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+          />
+        </AnimatePresence>
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary-dark/70 to-secondary/80"></div>
+        <div className="absolute inset-0" />
       </div>
 
       {/* Background Pattern */}
@@ -28,7 +53,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 text-center text-white relative z-10">
+      <div className="container mx-auto px-4 text-center text-white relative z-10 flex flex-col justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,9 +65,7 @@ const Hero = () => {
             <h1 className="font-display text-6xl md:text-8xl font-bold">
               King Karahi Tawa
             </h1>
-            <div className="space-y-2">
-
-            </div>
+            <div className="space-y-2"></div>
           </div>
 
           {/* Tagline */}
@@ -56,40 +79,36 @@ const Hero = () => {
           </motion.p>
 
           {/* Quick Link Boxes */}
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <div className="flex flex-wrap justify-center gap-4 mt-24">
             <a
               href="#menus"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform border-4 border-yellow-400 relative overflow-hidden"
+              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-orange.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
-              <div className="absolute inset-0 bg-primary/80"></div>
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">OUR MENUS</span>
               <span className="text-xs text-yellow-100 mt-2 relative z-10">Explore our dishes</span>
             </a>
             <a
               href="#gallery"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform border-4 border-pink-400 relative overflow-hidden"
+              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-pink.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
-              <div className="absolute inset-0 bg-secondary/80"></div>
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">GALLERY</span>
               <span className="text-xs text-pink-100 mt-2 relative z-10">See our food & venue</span>
             </a>
             <a
               href="#events"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform border-4 border-green-400 relative overflow-hidden"
+              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-green.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
-              <div className="absolute inset-0 bg-accent/80"></div>
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">EVENTS & CATERING</span>
               <span className="text-xs text-green-100 mt-2 relative z-10">Book your event</span>
             </a>
             <a
               href="#locations"
-              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform border-4 border-blue-400 relative overflow-hidden"
+              className="w-48 h-48 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
               style={{ backgroundImage: "url('/button-pattern-blue.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
-              <div className="absolute inset-0 bg-green-600/80"></div>
               <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">FIND US</span>
               <span className="text-xs text-blue-100 mt-2 relative z-10">Visit our restaurant</span>
             </a>
