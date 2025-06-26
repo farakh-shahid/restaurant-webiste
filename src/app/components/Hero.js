@@ -3,14 +3,41 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Play } from 'lucide-react';
+import { Typewriter } from 'react-simple-typewriter';
 
 const heroImages = [
-  '/bg-header.jpg',
+  // '/bg-header.jpg',
+  '/karahi.jpg',
+  '/daily-slowdown-7-TOCB28rms-unsplash.jpg',
+  // '/Lahori-Butt-Karahi-Hero-Setion-Image.webp',
   '/pexels-hasan-kurt-154798938-10749578.jpg',
-  '/pexels-hasan-kurt-154798938-13151204.jpg',
-  '/pexels-hot-wok-3583741-12232804.jpg',
-  '/pexels-jonathanborba-2983102.jpg',
+  // '/pexels-hasan-kurt-154798938-13151204.jpg',
+  // '/pexels-hot-wok-3583741-12232804.jpg',
+  // '/pexels-jonathanborba-2983102.jpg',
 ];
+
+const heroSlogans = [
+  'BEST KARAHI IN MANCHESTER',
+  'Authentic Pakistani Flavours',
+  'Where Taste Meets Tradition',
+  'Sizzling Specialties Await',
+  'A Royal Feast Experience',
+];
+
+// Animation variants for falling letters
+const letterVariants = {
+  hidden: { y: -60, opacity: 0 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.07,
+      type: 'spring',
+      stiffness: 500,
+      damping: 30,
+    },
+  }),
+};
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
@@ -18,12 +45,12 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 9000); 
+    }, 7000); // 7 seconds per slide
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image Slider */}
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
@@ -32,10 +59,10 @@ const Hero = () => {
             src={heroImages[current]}
             alt="King Karahi Tawa Restaurant Hero Background"
             className="w-full h-full object-cover absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
+            initial={{ opacity: 0, x: -80 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 80 }}
+            transition={{ duration: 2.5, ease: 'easeInOut' }}
           />
         </AnimatePresence>
         {/* Gradient Overlay */}
@@ -53,7 +80,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 text-center text-white relative z-10 flex flex-col justify-center min-h-screen mt-15">
+      <div className="container mx-auto px-4 text-center text-white relative z-10 flex flex-col justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,10 +89,32 @@ const Hero = () => {
         >
           {/* Main Title */}
           <div className="space-y-4">
-            <h1 className="font-display text-6xl md:text-8xl font-bold font-dancing-script">
-              King Karahi Tawa
+            <h1 className="font-display text-6xl md:text-8xl font-bold flex justify-center flex-wrap">
+              {"King Karahi Tawa".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  initial="hidden"
+                  animate="visible"
+                  variants={letterVariants}
+                  className="inline-block"
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
             </h1>
-            <div className="space-y-2"></div>
+            {/* Typewriter Slogan */}
+            <div className="text-2xl md:text-4xl font-dancing-script font-semibold mt-4">
+              <Typewriter
+                words={[heroSlogans[current]]}
+                loop={false}
+                cursor
+                cursorStyle="_"
+                typeSpeed={90}
+                deleteSpeed={70}
+                delaySpeed={2000}
+              />
+            </div>
           </div>
 
           {/* Tagline */}
@@ -79,77 +128,13 @@ const Hero = () => {
           </motion.p>
 
           {/* Quick Link Boxes */}
-          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 mt-15">
-            <a
-              href="#menus"
-              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-yellow-400 relative overflow-hidden"
-              style={{ backgroundImage: "url('/button-pattern-orange.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">OUR MENUS</span>
-              <span className="text-xs text-yellow-100 mt-2 relative z-10">Explore our dishes</span>
-            </a>
-            <a
-              href="#gallery"
-              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-pink-400 relative overflow-hidden"
-              style={{ backgroundImage: "url('/button-pattern-pink.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">GALLERY</span>
-              <span className="text-xs text-pink-100 mt-2 relative z-10">See our food & venue</span>
-            </a>
-            <a
-              href="#events"
-              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-green-400 relative overflow-hidden"
-              style={{ backgroundImage: "url('/button-pattern-green.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">EVENTS & CATERING</span>
-              <span className="text-xs text-green-100 mt-2 relative z-10">Book your event</span>
-            </a>
-            <a
-              href="#locations"
-              className="w-11/12 md:w-48 h-24 md:h-48 mx-auto md:mx-0 rounded-xl flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-all duration-700 border-4 border-blue-400 relative overflow-hidden"
-              style={{ backgroundImage: "url('/button-pattern-blue.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              <span className="font-bold text-lg md:text-xl text-white tracking-wide relative z-10">FIND US</span>
-              <span className="text-xs text-blue-100 mt-2 relative z-10">Visit our restaurant</span>
-            </a>
-          </div>
+          {/* Removed as per user request */}
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <button className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-              Order Online
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-primary transition-colors">
-              Book a Table
-            </button>
-            <button className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm text-white px-6 py-4 rounded-full hover:bg-white/30 transition-colors">
-              <Play size={20} />
-              <span>Watch Our Story</span>
-            </button>
-          </motion.div>
+          {/* Removed CTA buttons as per user request */}
 
           {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="flex justify-center space-x-6 pt-8"
-          >
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              Follow us on Twitter
-            </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              Join us on Facebook
-            </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              Follow us on Instagram
-            </a>
-          </motion.div>
+          {/* Removed social links as per user request */}
         </motion.div>
       </div>
 

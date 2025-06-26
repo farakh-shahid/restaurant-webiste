@@ -205,25 +205,7 @@ const Menus = () => {
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white">
-            <h3 className="font-display text-3xl font-bold mb-4">
-              Order Online the MyLahore Way
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Choose your location and start your culinary journey
-            </p>
-            <button className="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-              Choose Location & Order
-            </button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
