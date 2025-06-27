@@ -11,6 +11,7 @@ const Menus = () => {
       description: 'Our famous diverse menu with something for everyone',
       icon: Utensils,
       color: 'from-primary to-primary-dark',
+      bgImage: '/mario-raj-vsnAIYA9bms-unsplash.jpg',
       items: ['Traditional Curries', 'Grills & BBQs', 'Biryani & Rice', 'Breads & Naan']
     },
     {
@@ -18,6 +19,7 @@ const Menus = () => {
       description: 'UK mainland delivery available',
       icon: Gift,
       color: 'from-secondary to-red-700',
+      bgImage: '/order.jpg',
       items: ['Party Boxes', 'Family Meals', 'Frozen Range', 'Ready to Cook']
     },
     {
@@ -25,14 +27,21 @@ const Menus = () => {
       description: 'Homemade gourmet goodness',
       icon: Coffee,
       color: 'from-accent to-yellow-600',
+      bgImage: '/pexels-farhad-5713766.jpg',
       items: ['Traditional Cakes', 'Tray Bakes', 'Celebration Cakes', 'Desserts']
     },
     {
-      title: 'Catering',
-      description: 'Special occasions and events',
-      icon: Users,
-      color: 'from-green-500 to-green-700',
-      items: ['Weddings', 'Corporate Events', 'Private Parties', 'Canapes']
+      title: 'Starter Mix Grill',
+      description: 'A feast of mixed grills for every group size',
+      icon: Star,
+      color: 'from-yellow-400 to-yellow-700',
+      bgImage: '/sander-dalhuisen-jtQsFyWHis8-unsplash.jpg',
+      items: [
+        "King's Mix Grill Tawa for 2",
+        "King's Mix Grill Tawa for 4",
+        "King's Mix Grill Tawa for 5",
+        "King's Special Tawa for 8"
+      ]
     }
   ];
 
@@ -126,89 +135,36 @@ const Menus = () => {
               viewport={{ once: true }}
               className="group cursor-pointer"
             >
-              <div className={`bg-gradient-to-br ${category.color} rounded-2xl p-6 text-white text-center h-full transform transition-transform group-hover:scale-105`}>
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <category.icon size={32} />
+              <div
+                className={`relative rounded-2xl p-6 text-white text-center h-full transform transition-transform group-hover:scale-105 overflow-hidden`}
+                style={category.bgImage ? {
+                  backgroundImage: `url(${category.bgImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                } : {}}
+              >
+                {category.bgImage && (
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-all z-0" />
+                )}
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <category.icon size={32} />
+                  </div>
+                  <h3 className="font-display text-xl font-bold mb-2">{category.title}</h3>
+                  <p className="text-sm opacity-90 mb-4">{category.description}</p>
+                  <ul className="text-xs space-y-1">
+                    {category.items.map((item, idx) => (
+                      <li key={idx} className="opacity-80">• {item}</li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="font-display text-xl font-bold mb-2">{category.title}</h3>
-                <p className="text-sm opacity-90 mb-4">{category.description}</p>
-                <ul className="text-xs space-y-1">
-                  {category.items.map((item, idx) => (
-                    <li key={idx} className="opacity-80">• {item}</li>
-                  ))}
-                </ul>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Menu Items Section with Background */}
-        <div 
-          className="relative py-12 mb-16 rounded-2xl overflow-hidden"
-          style={{
-            backgroundImage: 'url(/menu-bg.jpg)',
-            backgroundAttachment: 'fixed',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
-          }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
-          {/* Content */}
-          <div className="relative z-10">
-            {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-5 py-2 rounded-full border font-semibold transition-colors text-base cursor-pointer ${selectedCategory === cat ? 'bg-primary text-white border-primary' : 'bg-white text-primary border-primary hover:bg-primary hover:text-white'}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            {/* Menu Items Section Redesigned */}
-            <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
-                {filteredDishes.map((dish, index) => (
-                  <div key={dish.name} className="flex items-start gap-6 pb-8 border-b border-dashed border-gray-300 last:border-b-0">
-                    {/* Circular Image with Shadow */}
-                    <div className="flex-shrink-0">
-                      <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg border-4 border-white bg-white">
-                        <img src={dish.image} alt={dish.name} className="object-cover w-full h-full" />
-                      </div>
-                    </div>
-                    {/* Content */}
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center mb-1">
-                        <h4 className="font-bold text-lg text-gray-900 tracking-tight uppercase">
-                          {dish.name}
-                        </h4>
-                        <span className="font-bold text-gray-900 text-base ml-4 whitespace-nowrap">
-                          {dish.price}
-                        </span>
-                      </div>
-                      <div className="text-sm text-gray-600 mb-1">
-                        {dish.description}
-                      </div>
-                      <div className="text-sm italic text-red-600 font-dancing-script">
-                        {dish.ingredients}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-
       </div>
     </section>
   );
 };
 
-export default Menus; 
+export default Menus;

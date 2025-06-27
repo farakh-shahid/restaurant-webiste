@@ -7,10 +7,11 @@ import { Typewriter } from 'react-simple-typewriter';
 
 const heroImages = [
   // '/bg-header.jpg',
-  '/karahi.jpg',
-  '/daily-slowdown-7-TOCB28rms-unsplash.jpg',
+  '/Lahori-Butt-Karahi-Hero-Setion-Image.webp',
+  // '/karahi.jpg',
+  // '/daily-slowdown-7-TOCB28rms-unsplash.jpg',
   // '/Lahori-Butt-Karahi-Hero-Setion-Image.webp',
-  '/pexels-hasan-kurt-154798938-10749578.jpg',
+  // '/pexels-hasan-kurt-154798938-10749578.jpg',
   // '/pexels-hasan-kurt-154798938-13151204.jpg',
   // '/pexels-hot-wok-3583741-12232804.jpg',
   // '/pexels-jonathanborba-2983102.jpg',
@@ -89,7 +90,7 @@ const Hero = () => {
         >
           {/* Main Title */}
           <div className="space-y-4">
-            <h1 className="font-display text-6xl md:text-8xl font-bold flex justify-center flex-wrap">
+            <h1 className="font-display text-4xl md:text-8xl font-semibold md:font-bold flex justify-center flex-wrap">
               {"King Karahi Tawa".split("").map((char, i) => (
                 <motion.span
                   key={i}
@@ -104,15 +105,15 @@ const Hero = () => {
               ))}
             </h1>
             {/* Typewriter Slogan */}
-            <div className="text-2xl md:text-4xl font-dancing-script font-semibold mt-4">
+            <div className="text-xl md:text-4xl font-sans font-normal mt-4">
               <Typewriter
                 words={[heroSlogans[current]]}
                 loop={false}
                 cursor
                 cursorStyle="_"
-                typeSpeed={90}
-                deleteSpeed={70}
-                delaySpeed={2000}
+                typeSpeed={30}
+                deleteSpeed={25}
+                delaySpeed={5000}
               />
             </div>
           </div>
