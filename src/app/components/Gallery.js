@@ -25,7 +25,7 @@ const Gallery = () => {
     {
       src: '/WhatsApp Image 2025-06-24 at 11.36.07 AM (6).jpeg',
       alt: 'Grilled Specialties',
-      category: 'Grill',
+      category: '',
       type: 'image'
     },
     {
@@ -163,16 +163,16 @@ const Gallery = () => {
       poster: '/WhatsApp Image 2025-06-24 at 11.36.07 AM (2).jpeg'
     },
     // New Images
-    { src: '/Platter3.webp', alt: 'Mixed Platter 3', category: 'Platters', type: 'image' },
-    { src: '/Platter2.webp', alt: 'Mixed Platter 2', category: 'Platters', type: 'image' },
-    { src: '/Platter.webp', alt: 'Mixed Platter', category: 'Platters', type: 'image' },
+    { src: '/Platter3.webp', alt: 'Mixed Platter 3', category: 'Main Course', type: 'image' },
+    { src: '/Platter2.webp', alt: 'Mixed Platter 2', category: 'Main Course', type: 'image' },
+    { src: '/Platter.webp', alt: 'Mixed Platter', category: 'Main Course', type: 'image' },
     { src: '/Nann.webp', alt: 'Fresh Naan', category: 'Breads', type: 'image' },
-    { src: '/Menu.webp', alt: 'Restaurant Menu', category: 'Menu', type: 'image' },
-    { src: '/Main_door.webp', alt: 'Main Entrance', category: 'Ambiance', type: 'image' },
-    { src: '/lahore-hero.webp', alt: 'Restaurant Hero', category: 'Ambiance', type: 'image' },
+    { src: '/Menu.webp', alt: 'Restaurant Menu', category: 'Main Course', type: 'image' },
+    { src: '/Main_door.webp', alt: 'Main Entrance', category: 'Main Course', type: 'image' },
+    { src: '/lahore-hero.webp', alt: 'Restaurant Hero', category: 'Main Course', type: 'image' },
     { src: '/HeroSectionNewPic.jpg', alt: 'Hero Section New', category: 'Ambiance', type: 'image' },
     { src: '/Gallery.webp', alt: 'Gallery Interior', category: 'Ambiance', type: 'image' },
-    { src: '/2025-02-19.webp', alt: 'Special Event 2025', category: 'Events', type: 'image' },
+    { src: '/2025-02-19.webp', alt: 'Special Event 2025', category: 'Ambiance', type: 'image' },
     { src: '/Ambiance.webp', alt: 'Restaurant Ambiance', category: 'Ambiance', type: 'image' },
     { src: '/BBQ.webp', alt: 'BBQ Platter', category: 'BBQ', type: 'image' },
     { src: '/BBq2.jpg', alt: 'BBQ Platter 2', category: 'BBQ', type: 'image' },
@@ -182,26 +182,13 @@ const Gallery = () => {
 
   const categories = [
     'All', 
-    'Main Course', 
-    'Curry', 
-    'Grill', 
-    'Rice', 
-    'Tandoor', 
-    'Chef Special', 
-    'Dining', 
-    'Ambiance', 
-    'Interior', 
-    'Presentation', 
-    'Ingredients', 
+    'Chef Special',  
     'Experience',
     'Behind the Scenes',
-    'Food Prep',
-    'Service',
     'Platters',
-    'Breads',
-    'Menu',
     'Events',
-    'BBQ'
+    'BBQ',
+    'Ambiance'
   ];
 
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -267,13 +254,13 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12 cursor-pointer"
         >
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 selectedCategory === category
                   ? 'bg-primary text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

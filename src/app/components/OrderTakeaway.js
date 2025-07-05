@@ -31,19 +31,15 @@ const OrderTakeaway = () => {
         <ul className="space-y-4 text-gray-700 text-base md:text-lg">
           <li className="flex items-center justify-center gap-2">
             <MapPin size={20} className="text-primary" />
-            142b Cheetham Hill Rd, Cheetham Hill, Manchester
+            819 Stockport Rd, Levenshulme, Manchester M19 3PL
           </li>
           <li className="flex items-center justify-center gap-2">
             <Clock size={20} className="text-primary" />
-            Open 7 Days From Sharp 12:00 pm to 11:00 pm
-          </li>
-          <li className="flex items-center justify-center gap-2">
-            <Clock size={20} className="text-primary" />
-            Friday & Saturday 12:00 pm to 11:45 pm
+            Open 7 Days From 9:00 am to 11:30 pm
           </li>
           <li className="flex items-center justify-center gap-2">
             <Phone size={20} className="text-primary" />
-            0161 791 5252
+            0161 843 3513
           </li>
         </ul>
       </motion.div>
